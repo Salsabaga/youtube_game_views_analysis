@@ -41,11 +41,11 @@ youtube_videos = [
     },
     {
         "name": "King",
-        "url": "https://www.youtube.com/watch?v=PbJ0ie1Ao3U"
+        "url": "https://www.youtube.com/watch?v=rTZhyVpmvxA"
     },
     {
         "name": "Lars",
-        "url": "https://www.youtube.com/watch?v=FFAMYW2POBw"
+        "url": "https://www.youtube.com/watch?v=gIt9kFe5QX4"
     },
     {
         "name": "Law",
@@ -65,7 +65,7 @@ youtube_videos = [
     },
     {
         "name": "Paul",
-        "url": "https://www.youtube.com/watch?v=vTd2XeL4ygQ"
+        "url": "https://www.youtube.com/watch?v=eCOWceM2nZo"
     },
     {
         "name": "Raven",
