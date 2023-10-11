@@ -20,7 +20,10 @@ class YoutubeViewCount:
         wait = WebDriverWait(self.driver, 20)
         self.driver.maximize_window()
 
-        reject_cookies = wait.until(EC.presence_of_element_located((By.XPATH, '//*[@id="content"]/div[2]/div[6]/div[1]/ytd-button-renderer[1]/yt-button-shape/button/yt-touch-feedback-shape/div/div[2]')))
+        reject_cookies = wait.until(EC.presence_of_element_located((By.XPATH, '//*[@id="content"]/div[2]/div[6]/div[1]'
+                                                                              '/ytd-button-renderer[1]/yt-button-shape/'
+                                                                              'button/yt-touch-feedback-shape/'
+                                                                              'div/div[2]')))
         reject_cookies.click()
 
         click_description = wait.until(EC.presence_of_element_located((By.XPATH, '//*[@id="expand"]')))
@@ -36,5 +39,3 @@ class YoutubeViewCount:
 
     def close(self):
         self.driver.quit()
-
-

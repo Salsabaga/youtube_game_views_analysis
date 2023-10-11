@@ -11,3 +11,4 @@ class YoutubeDataTable(Base):
     view_count = Column(Integer, nullable=False)
     date = Column(String, nullable=False)
     time = Column(String)
+    name = Column(String)
