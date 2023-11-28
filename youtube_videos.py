@@ -1,5 +1,17 @@
 youtube_videos = [
     {
+        "name": "Leo",
+        "url": "https://www.youtube.com/watch?v=QH6s_o3dIic"
+    },
+    {
+        "name": "Reina",
+        "url": "https://www.youtube.com/watch?v=PsCpewoF2E4"
+    },
+    {
+        "name": "Victor",
+        "url": "https://www.youtube.com/watch?v=cIDK50IaVpg"
+    },
+    {
         "name": "Asuka",
         "url": "https://www.youtube.com/watch?v=p07h8qIsUd4"
     },
@@ -50,6 +62,10 @@ youtube_videos = [
     {
         "name": "Law",
         "url": "https://www.youtube.com/watch?v=6j1BEga_BIM"
+    },
+    {
+        "name": "DJZABLC",
+        "url": "https://www.youtube.com/watch?v=H5RvYVx0onk"
     },
     {
         "name": "Leroy",

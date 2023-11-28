@@ -14,11 +14,19 @@ class DatabaseManager:
     def get_session(self):
         return self.Session()
 
+    def add_new_view_counts(self, converted_data, db_table):
+        with self.Session() as session:
+            for data in converted_data:
+                new_entry = db_table(video_name=data["Video Name"], view_count=data["View Count"], date=data["Date"],
+                                             time=data["Time"], name=data["Name"])
+                session.add(new_entry)
+                session.commit()
+
     def daily_view_trend(self):
-        query_sql = """SELECT t.name, DATE(t.date) AS distinct_date, MAX(t.time) AS latest_time, t.video_name, t.view_count
+        query_sql = """SELECT t.name, DATE(t.date) AS distinct_date, MIN(t.time) AS latest_time, t.video_name, t.view_count
         FROM youtube_data_table t
         WHERE (t.date, t.time) IN (
-            SELECT MAX(date), time
+            SELECT MIN(date), time
             FROM youtube_data_table
             WHERE name = t.name
             GROUP BY time
@@ -33,30 +41,32 @@ class DatabaseManager:
         return result
 
     def daily_change_count(self):
-        query = """SELECT t.name, DATE(t.date) AS distinct_date, MAX(t.time) AS latest_time, t.video_name, t.view_count
-        FROM youtube_data_table t
-        WHERE (t.date, t.time) IN (
-            SELECT MAX(date), time
-            FROM youtube_data_table
-            WHERE name = t.name
-            GROUP BY time
+        query = """WITH RankedRows AS (
+            SELECT
+                t.name,
+                DATE(t.date) AS distinct_date,
+                t.date,
+                t.time,
+                t.video_name,
+                t.view_count,
+                ROW_NUMBER() OVER (PARTITION BY t.name, DATE(t.date) ORDER BY t.date, t.time) AS row_num
+            FROM youtube_data_table t
         )
-        GROUP BY t.name, DATE(t.date);"""
+        SELECT
+            name,
+            distinct_date,
+            date,
+            time,
+            video_name,
+            view_count
+        FROM RankedRows
+        WHERE row_num = 1;"""
         change_count_df = pd.read_sql_query(query, self.engine)
 
         # Calculate view count differences
         change_count_df['view_count_difference'] = change_count_df.groupby('name')['view_count'].diff()
 
         return change_count_df.dropna()
-
-    # To add a new entry at the end of the day
-    # Must be put into a class
-    # for data in views_list:
-    #     new_entry = YoutubeDataTable(video_name=data["Video Name"], view_count=data["View Count"], date=data["Date"],
-    #                                  time=data["Time"], name=data["Name"])
-    #     session.add(new_entry)
-    #     session.commit()
-    # session.close()
 
     # Fix issue with null values, to be ammended in case of edgecases (a new column to be made)
     # for data in video_list:

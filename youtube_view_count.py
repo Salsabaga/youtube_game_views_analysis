@@ -5,6 +5,8 @@ from selenium.webdriver.support.wait import WebDriverWait
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.chrome.options import Options
+from datetime import datetime
+import re
 
 
 class YoutubeViewCount:
@@ -32,8 +34,17 @@ class YoutubeViewCount:
         video_name = self.driver.find_element(By.XPATH, '//*[@id="title"]/h1/yt-formatted-string')
         data.append(video_name)
 
-        view_count = self.driver.find_element(By.XPATH, '//*[@id="info"]/span[1]')
-        data.append(view_count)
+        raw_extracted_data = self.driver.find_element(By.XPATH, '//*[@id="info"]/span[1]')
+        extracted_data = raw_extracted_data.text
+        date_pattern = r"\d{1,2} \w{3} \d{4}"
+
+        if re.match(date_pattern, extracted_data):
+            raw_view_count = self.driver.find_element(By.XPATH, '//*[@id="view-count"]')
+            view_count = raw_view_count.get_attribute("aria-label")
+            data.append(view_count)
+        else:
+            view_count = extracted_data
+            data.append(view_count)
 
         return data
 

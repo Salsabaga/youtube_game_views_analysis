@@ -15,7 +15,7 @@ class DataConverter:
             video_views = YoutubeViewCount(video_url)
             video_info = video_views.get_views()
             video_name = video_info[0].text
-            raw_view_count = video_info[1].text
+            raw_view_count = video_info[1]
             cleaned_view_text = raw_view_count.replace(" views", "")
             view_count = int(cleaned_view_text.replace(",", ""))
             fetch_datetime = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S").split(" ")
