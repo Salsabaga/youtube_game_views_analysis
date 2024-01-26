@@ -1,5 +1,61 @@
 youtube_videos = [
     {
+        "name": "Launch Trailer",
+        "url": "https://www.youtube.com/watch?v=_MM4clV2qjE"
+    },
+    {
+        "name": "Lee",
+        "url": "https://www.youtube.com/watch?v=-0mjC3FEMc4"
+    },
+    {
+        "name": "Live Action",
+        "url": "https://www.youtube.com/watch?v=LSPSTWx06YU"
+    },
+    {
+        "name": "Zafina",
+        "url": "https://www.youtube.com/watch?v=onDveyFTCsA"
+    },
+    {
+        "name": "Opening Seq",
+        "url": "https://www.youtube.com/watch?v=fzqvmFrV46c"
+    },
+    {
+        "name": "Alisa",
+        "url": "https://www.youtube.com/watch?v=ND8nZ0NSt00"
+    },
+    {
+        "name": "Panda",
+        "url": "https://www.youtube.com/watch?v=PO1vA4TKH8k"
+    },
+    {
+        "name":"Story so far",
+        "url": "https://www.youtube.com/watch?v=wRIOVeirAa0"
+    },
+    {
+        "name": "Kuma",
+        "url": "https://www.youtube.com/watch?v=6m7jNzjuoHU"
+    },
+    {
+        "name": "Shaheen",
+        "url": "https://www.youtube.com/watch?v=UgnPG2bScVQ"
+    },
+    {
+        "name": "Story Trailer",
+        "url": "https://www.youtube.com/watch?v=ToKJfywbe1o"
+    },
+    {
+        "name": "Yoshimitsu",
+        "url": "https://www.youtube.com/watch?v=y8JGUIF2pu4"
+    },
+    {
+        "name": "Dragunov",
+        "url": "https://www.youtube.com/watch?v=ucesGynb2Yk"
+    },
+    {
+        "name": "Steve",
+        "url": "https://www.youtube.com/watch?v=Zc-yMi05vBA"
+    },
+    {
         "name": "Leo",
         "url": "https://www.youtube.com/watch?v=QH6s_o3dIic"
     },
